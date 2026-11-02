@@ -6,7 +6,9 @@ DATE_FORMAT = '%Y-%m-%d'
 
 def normalize_date(expiration_date):
     if expiration_date:
-        expiration_date_formatted = datetime.datetime.strptime(expiration_date, DATE_FORMAT)
+        expiration_date_formatted = datetime.datetime.strptime(
+            expiration_date, DATE_FORMAT
+        )
         expiration_only_date = expiration_date_formatted.date()
         return expiration_only_date
     else:
@@ -67,7 +69,8 @@ def get_amount(items, needle):
 
 def get_expired(items, in_advance_days=0):
     expired_products = []
-    date_today = datetime.date.today() + datetime.timedelta(days=in_advance_days)
+    date_today = (datetime.date.today()
+                  + datetime.timedelta(days=in_advance_days))
     for key, lists in items.items():
         total_count = Decimal('0')
         expired_product_list = list()
